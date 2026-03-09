@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law of Demand – Class 11 Economics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #fdfaf4;
+    --gold: #c9993a;
+    --red: #c0392b;
+    --green: #1e7a4e;
+    --blue: #1a5276;
+    --accent: #e8d5a3;
+    --light: #f5f0e8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Sans 3', sans-serif;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(201,153,58,0.15);
+  }
+  header .tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  header h1 span { color: var(--gold); }
+  header p {
+    margin-top: 12px;
+    font-size: 15px;
+    opacity: 0.75;
+    max-width: 520px;
+  }
+
+  /* NAV PILLS */
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 20px 40px;
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav a {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav a:hover, .nav a.active {
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* MAIN CONTENT */
+  main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* SECTION STYLES */
+  .section { margin-bottom: 56px; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 12px;
+  }
+
+  /* DEFINITION BOX */
+  .def-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-left: 5px solid var(--gold);
+    padding: 24px 28px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+    position: relative;
+  }
+  .def-box .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--gold);
+    opacity: 0.2;
+    position: absolute;
+    top: -10px; left: 16px;
+    line-height: 1;
+  }
+  .def-box p {
+    font-size: 17px;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    line-height: 1.8;
+  }
+  .def-box .attribution {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.5;
+    font-style: normal;
+  }
+
+  /* POINT CARDS */
+  .points-grid { display: grid; gap: 16px; }
+  .point-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--light);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border: 1px solid var(--accent);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .point-card:hover {
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 var(--gold);
+  }
+  .point-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .point-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .point-card p { font-size: 14px; color: #444; }
+
+  /* EXAMPLE BOX */
+  .example-box {
+    background: #eaf4ec;
+    border: 1px solid #a8d5b5;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .example-box .ex-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .example-box p, .example-box li { font-size: 14.5px; }
+
+  /* DEMAND SCHEDULE TABLE */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+  thead { background: var(--ink); color: var(--paper); }
+  thead th {
+    padding: 12px 20px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  tbody tr:nth-child(even) { background: var(--light); }
+  tbody tr:nth-child(odd) { background: white; }
+  tbody td {
+    padding: 11px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--accent);
+  }
+  .arrow-col { color: var(--red); font-weight: 700; font-size: 16px; }
+
+  /* SVG DIAGRAM */
+  .diagram-wrap {
+    background: white;
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .diagram-wrap h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  svg text { font-family: 'Source Sans 3', sans-serif; }
+
+  /* EXCEPTIONS */
+  .exception-card {
+    background: #fef9f0;
+    border: 1px solid #f0d89a;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+  }
+  .exception-card h4 {
+    font-weight: 700;
+    color: #7d5a0a;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .exception-card p { font-size: 14px; color: #555; }
+
+  /* QUESTIONS */
+  .q-card {
+    background: white;
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .q-card .q-num {
+    position: absolute;
+    top: -12px; left: 20px;
+    background: var(--ink);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+  .q-card .diff {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .diff.hard { background: #fde8e8; color: var(--red); }
+  .diff.medium { background: #fff3cd; color: #856404; }
+  .diff.hots { background: #e8d5f5; color: #6a0dad; }
+  .q-card p { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .q-card .hint {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    border-top: 1px dashed var(--accent);
+    padding-top: 8px;
+  }
+
+  /* TOGGLE ANSWER */
+  .ans-toggle {
+    margin-top: 10px;
+    background: none;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 5px 14px;
+    font-size: 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .ans-toggle:hover { background: var(--gold); color: white; }
+  .answer {
+    display: none;
+    margin-top: 12px;
+    background: #f0f7f0;
+    border-left: 3px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    color: #2a5a3a;
+  }
+  .answer.open { display: block; }
+
+  /* SUMMARY BOX */
+  .summary {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-top: 40px;
+  }
+  .summary h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .summary ul { list-style: none; padding: 0; }
+  .summary ul li {
+    padding: 6px 0;
+    font-size: 14.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 10px;
+  }
+  .summary ul li::before { content: '→'; color: var(--gold); }
+
+  @media (max-width: 600px) {
+    header, .nav { padding-left: 20px; padding-right: 20px; }
+    main { padding: 24px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">Class 11 · Economics · Microeconomics</div>
+  <h1>Law of <span>Demand</span></h1>
+  <p>A complete study guide with diagrams, explanations, exceptions, and challenging practice questions.</p>
+</header>
+
+<nav class="nav">
+  <a href="#definition" class="active">Definition</a>
+  <a href="#explanation">Explanation</a>
+  <a href="#schedule">Demand Schedule</a>
+  <a href="#curve">Demand Curve</a>
+  <a href="#why">Why the Law Holds</a>
+  <a href="#exceptions">Exceptions</a>
+  <a href="#questions">Practice Q&A</a>
+</nav>
+
+<main>
+
+  <!-- SECTION 1: DEFINITION -->
+  <section class="section" id="definition">
+    <div class="section-label">Section 01</div>
+    <h2>Definition of Law of Demand</h2>
+
+    <div class="def-box">
+      <div class="quote-mark">"</div>
+      <p>Other things remaining equal (<em>ceteris paribus</em>), there exists an <strong>inverse relationship</strong> between the price of a commodity and the quantity demanded — when price rises, quantity demanded falls, and when price falls, quantity demanded rises.</p>
+      <div class="attribution">— Standard NCERT / Class 11 Economics Definition</div>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">🍎 Real-Life Example</div>
+      <p>Think of <strong>mangoes</strong>. When the price of mangoes is ₹20/kg, you buy 5 kg. When the price rises to ₹80/kg, you cut back to 1 kg. Your desire for mangoes is the same — but at a higher price, you demand less. <em>This is the Law of Demand in action.</em></p>
+    </div>
+
+    <div class="points-grid" style="margin-top:20px;">
+      <div class="point-card">
+        <div class="point-num">01</div>
+        <div>
+          <h4>Inverse Relationship</h4>
+          <p>Price ↑ → Quantity Demanded ↓ &nbsp;|&nbsp; Price ↓ → Quantity Demanded ↑</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">02</div>
+        <div>
+          <h4>Ceteris Paribus Assumption</h4>
+          <p>"Other things equal" — income, tastes, prices of related goods, expectations — all held constant. Only price changes.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">03</div>
+        <div>
+          <h4>It is a Law, Not an Absolute Rule</h4>
+          <p>It holds true in most cases but has notable exceptions (Giffen goods, Veblen goods, etc.).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: EXPLANATION -->
+  <section class="section" id="explanation">
+    <div class="section-label">Section 02</div>
+    <h2>Point-by-Point Explanation</h2>
+
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-num">A</div>
+        <div>
+          <h4>Demand vs. Desire</h4>
+          <p>Demand is not just a wish. It requires: (1) a <em>desire</em> to buy, (2) <em>ability</em> (income) to pay, and (3) <em>willingness</em> to pay. Without all three, there is no demand.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">B</div>
+        <div>
+          <h4>Demand is Always at a Price</h4>
+          <p>Demand is always stated with reference to a price and a time period. "Demand for 5 units" is incomplete. "Demand for 5 units at ₹10 per unit" is correct.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">C</div>
+        <div>
+          <h4>Individual vs. Market Demand</h4>
+          <p><strong>Individual Demand:</strong> One consumer's demand at various prices. <strong>Market Demand:</strong> Sum of all individual demands in the market at each price level.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">D</div>
+        <div>
+          <h4>Movement Along vs. Shift of Demand Curve</h4>
+          <p><strong>Change in quantity demanded</strong> (due to price change) = movement along the curve. <strong>Change in demand</strong> (due to income, taste, etc.) = shift of the entire curve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: DEMAND SCHEDULE -->
+  <section class="section" id="schedule">
+    <div class="section-label">Section 03</div>
+    <h2>Demand Schedule</h2>
+    <p style="margin-bottom:16px;">A <strong>demand schedule</strong> is a table that shows the different quantities of a good that a consumer is willing to buy at different prices, during a given time period, all else constant.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Price of Good (₹)</th>
+            <th>Quantity Demanded (units/week)</th>
+            <th>Change in Price</th>
+            <th>Change in Qty. Demanded</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>₹ 5</td><td>50</td><td class="arrow-col">↑</td><td class="arrow-col" style="color:var(--green);">↑</td></tr>
+          <tr><td>₹ 10</td><td>40</td><td class="arrow-col">↑</td><td class="arrow-col">↓</td></tr>
+          <tr><td>₹ 15</td><td>30</td><td class="arrow-col">↑</td><td class="arrow-col">↓</td></tr>
+          <tr><td>₹ 20</td><td>20</td><td class="arrow-col">↑</td><td class="arrow-col">↓</td></tr>
+          <tr><td>₹ 25</td><td>10</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example-box">
+      <div class="ex-label">📌 Key Observation</div>
+      <p>As price rises from ₹5 → ₹25, quantity demanded falls from 50 → 10 units. This confirms the <strong>inverse/negative relationship</strong> — the fundamental principle of the Law of Demand.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: DEMAND CURVE -->
+  <section class="section" id="curve">
+    <div class="section-label">Section 04</div>
+    <h2>The Demand Curve</h2>
+    <p style="margin-bottom:16px;">When we plot the demand schedule on a graph (Price on Y-axis, Quantity on X-axis), we get the <strong>Demand Curve</strong> — which slopes <em>downward from left to right</em>.</p>
+
+    <div class="diagram-wrap">
+      <h3>📈 Demand Curve Diagram</h3>
+      <svg viewBox="0 0 520 380" width="100%" style="max-width:520px;">
+        <!-- Grid -->
+        <line x1="70" y1="20" x2="70" y2="330" stroke="#ddd" stroke-width="1"/>
+        <line x1="70" y1="330" x2="490" y2="330" stroke="#ddd" stroke-width="1"/>
+        <!-- Grid lines -->
+        <line x1="70" y1="80"  x2="490" y2="80"  stroke="#eee" stroke-dasharray="4"/>
+        <line x1="70" y1="140" x2="490" y2="140" stroke="#eee" stroke-dasharray="4"/>
+        <line x1="70" y1="200" x2="490" y2="200" stroke="#eee" stroke-dasharray="4"/>
+        <line x1="70" y1="260" x2="490" y2="260" stroke="#eee" stroke-dasharray="4"/>
+        <line x1="150" y1="20" x2="150" y2="330" stroke="#eee" stroke-dasharray="4"/>
+        <line x1="230" y1="20" x2="230" y2="330" stroke="#eee" stroke-dasharray="4"/>
+        <line x1="310" y1="20" x2="310" y2="330" stroke="#eee" stroke-dasharray="4"/>
+        <line x1="390" y1="20" x2="390" y2="330" stroke="#eee" stroke-dasharray="4"/>
+
+        <!-- Axes -->
+        <line x1="70" y1="20" x2="70" y2="340" stroke="#1a1a2e" stroke-width="2.5"/>
+        <line x1="60" y1="330" x2="500" y2="330" stroke="#1a1a2e" stroke-width="2.5"/>
+        <!-- Arrowheads -->
+        <polygon points="70,14 65,26 75,26" fill="#1a1a2e"/>
+        <polygon points="506,330 494,325 494,335" fill="#1a1a2e"/>
+
+        <!-- Axis Labels -->
+        <text x="30" y="175" font-size="13" fill="#1a1a2e" font-weight="600" transform="rotate(-90,30,175)" text-anchor="middle">Price (₹)</text>
+        <text x="490" y="352" font-size="13" fill="#1a1a2e" font-weight="600" text-anchor="middle">Quantity Demanded →</text>
+
+        <!-- Price labels -->
+        <text x="58" y="84"  font-size="11" fill="#555" text-anchor="end">25</text>
+        <text x="58" y="144" font-size="11" fill="#555" text-anchor="end">20</text>
+        <text x="58" y="204" font-size="11" fill="#555" text-anchor="end">15</text>
+        <text x="58" y="264" font-size="11" fill="#555" text-anchor="end">10</text>
+        <text x="58" y="332" font-size="11" fill="#555" text-anchor="end">5</text>
+        <!-- Qty labels -->
+        <text x="150" y="348" font-size="11" fill="#555" text-anchor="middle">10</text>
+        <text x="230" y="348" font-size="11" fill="#555" text-anchor="middle">20</text>
+        <text x="310" y="348" font-size="11" fill="#555" text-anchor="middle">30</text>
+        <text x="390" y="348" font-size="11" fill="#555" text-anchor="middle">40</text>
+        <text x="470" y="348" font-size="11" fill="#555" text-anchor="middle">50</text>
+
+        <!-- Demand Curve -->
+        <polyline points="150,80 230,140 310,200 390,260 470,330"
+          fill="none" stroke="#c0392b" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+        <!-- Data Points -->
+        <circle cx="150" cy="80"  r="6" fill="#c0392b" stroke="white" stroke-width="2"/>
+        <circle cx="230" cy="140" r="6" fill="#c0392b" stroke="white" stroke-width="2"/>
+        <circle cx="310" cy="200" r="6" fill="#c0392b" stroke="white" stroke-width="2"/>
+        <circle cx="390" cy="260" r="6" fill="#c0392b" stroke="white" stroke-width="2"/>
+        <circle cx="470" cy="330" r="6" fill="#c0392b" stroke="white" stroke-width="2"/>
+
+        <!-- Point labels -->
+        <text x="158" y="72"  font-size="11" fill="#c0392b" font-weight="600">A(10,25)</text>
+        <text x="238" y="132" font-size="11" fill="#c0392b" font-weight="600">B(20,20)</text>
+        <text x="318" y="192" font-size="11" fill="#c0392b" font-weight="600">C(30,15)</text>
+        <text x="398" y="252" font-size="11" fill="#c0392b" font-weight="600">D(40,10)</text>
+        <text x="430" y="325" font-size="11" fill="#c0392b" font-weight="600">E(50,5)</text>
+
+        <!-- Label "DD" -->
+        <text x="440" y="295" font-size="18" fill="#c0392b" font-weight="900" font-style="italic">DD</text>
+
+        <!-- Downward arrow annotation -->
+        <text x="320" y="100" font-size="12" fill="#1a5276" font-weight="600">Slopes downward</text>
+        <text x="320" y="114" font-size="12" fill="#1a5276">left to right →</text>
+        <line x1="318" y1="117" x2="290" y2="155" stroke="#1a5276" stroke-width="1.5" marker-end="url(#arr)"/>
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#1a5276"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-num">→</div>
+        <div>
+          <h4>Why Does the Demand Curve Slope Downward?</h4>
+          <p>Because of the inverse relationship between price and quantity demanded. As price falls, consumers buy more; as price rises, they buy less.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">→</div>
+        <div>
+          <h4>X-axis and Y-axis</h4>
+          <p><strong>Y-axis (vertical):</strong> Price of the commodity. <strong>X-axis (horizontal):</strong> Quantity demanded. Each point on the curve is a (Qty, Price) pair from the demand schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: WHY THE LAW HOLDS -->
+  <section class="section" id="why">
+    <div class="section-label">Section 05</div>
+    <h2>Why Does the Law of Demand Hold? (Reasons)</h2>
+
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-num">01</div>
+        <div>
+          <h4>Law of Diminishing Marginal Utility (DMU)</h4>
+          <p>As a consumer buys more units, the satisfaction (utility) from each additional unit falls. A consumer will buy an extra unit only if the price falls to match the lower utility. Hence, more is demanded only at lower prices.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">02</div>
+        <div>
+          <h4>Income Effect</h4>
+          <p>When price falls, the real purchasing power of the consumer <em>increases</em> (same money buys more). This rise in real income leads to an increase in demand for the good.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">03</div>
+        <div>
+          <h4>Substitution Effect</h4>
+          <p>When price of a good falls, it becomes <em>relatively cheaper</em> compared to its substitutes. Consumers substitute the cheaper good for the costlier one, increasing its demand.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">04</div>
+        <div>
+          <h4>New Consumers Enter the Market</h4>
+          <p>At a high price, only rich consumers can afford a good. When the price drops, more consumers (with lower incomes) can now afford it — this increases total market demand.</p>
+        </div>
+      </div>
+      <div class="point-card">
+        <div class="point-num">05</div>
+        <div>
+          <h4>Multiple Uses of a Good</h4>
+          <p>Many goods have several uses (e.g., milk for drinking, making curd, ghee, etc.). At a high price, a consumer uses it for priority needs only. At a lower price, they use it for all purposes, increasing demand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: EXCEPTIONS -->
+  <section class="section" id="exceptions">
+    <div class="section-label">Section 06</div>
+    <h2>Exceptions to the Law of Demand</h2>
+    <p style="margin-bottom:20px;">In these cases, the demand curve slopes <em>upward</em> — more is demanded at higher prices.</p>
+
+    <div class="exception-card">
+      <h4>1. Giffen Goods</h4>
+      <p>Inferior goods on which poor people spend a large portion of their income (e.g., jowar, bajra). When price rises, their real income falls so much that they <em>can't afford</em> the superior substitute and buy <em>more</em> of the inferior good. Named after Sir Robert Giffen.</p>
+    </div>
+    <div class="exception-card">
+      <h4>2. Veblen Goods (Goods of Ostentation / Prestige Goods)</h4>
+      <p>Luxury/status goods (e.g., designer watches, luxury cars). Higher price = higher prestige. Consumers demand <em>more</em> because they want to display wealth. Named after Thorstein Veblen.</p>
+    </div>
+    <div class="exception-card">
+      <h4>3. Expectation of Future Price Rise</h4>
+      <p>If consumers expect prices to rise further in the future, they may buy <em>more</em> now even as prices are already rising (e.g., speculative buying of gold, real estate).</p>
+    </div>
+    <div class="exception-card">
+      <h4>4. Necessities (Basic Needs)</h4>
+      <p>For essential goods like life-saving medicines, consumers continue to buy even at very high prices because demand is <strong>perfectly inelastic</strong> — the law doesn't hold well here.</p>
+    </div>
+    <div class="exception-card">
+      <h4>5. Ignorance Effect</h4>
+      <p>Sometimes, consumers use price as a signal of quality. A higher-priced product is assumed to be better, so demand rises with price (e.g., branded medicine vs. generic).</p>
+    </div>
+  </section>
+
+  <!-- SECTION 7: PRACTICE QUESTIONS -->
+  <section class="section" id="questions">
+    <div class="section-label">Section 07</div>
+    <h2>Practice Questions (Difficult)</h2>
+    <p style="margin-bottom:24px;">These questions test deep understanding — including application, analysis, and HOTS (Higher Order Thinking Skills).</p>
+
+    <!-- Q1 -->
+    <div class="q-card">
+      <div class="q-num">Q. 01</div>
+      <span class="diff hard">Hard</span>
+      <p>"The Law of Demand is based on the law of diminishing marginal utility." Critically examine this statement with reference to income and substitution effects.</p>
+      <div class="hint">💡 Hint: Explain how DMU, income effect, and substitution effect together justify the inverse price-demand relationship.</div>
+      <button class="ans-toggle" onclick="toggleAns(this)">Show Answer</button>
+      <div class="answer">
+        The Law of Demand is largely, but not entirely, derived from DMU. When price falls, the marginal utility of money (MU of ₹1) rises in comparison to the MU of the good, so the consumer buys more until MU again equals price. However, DMU alone is insufficient for all goods — which is why we supplement it with: <br><br>
+        <strong>Income Effect:</strong> A fall in price increases the consumer's real income, allowing more purchases.<br>
+        <strong>Substitution Effect:</strong> A fall in price makes the good relatively cheaper — consumers substitute it for pricier alternatives.<br><br>
+        Both effects work in the same direction for normal goods, making the demand curve slope downward. For inferior goods, the income effect works in the <em>opposite</em> direction — which is why Giffen goods are exceptions.
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card">
+      <div class="q-num">Q. 02</div>
+      <span class="diff hots">HOTS</span>
+      <p>The price of petrol rises sharply, yet its demand does not fall significantly. Does this violate the Law of Demand? Explain the role of elasticity of demand in your answer.</p>
+      <div class="hint">💡 Hint: Think about inelastic demand and necessity goods.</div>
+      <button class="ans-toggle" onclick="toggleAns(this)">Show Answer</button>
+      <div class="answer">
+        No, this does NOT violate the Law of Demand. The law only states that quantity demanded will <em>fall</em> when price rises — it does not say by <em>how much</em>. Petrol is a necessity with few substitutes, so demand falls very slightly when price rises — the demand is <strong>price inelastic</strong>. The inverse relationship still exists; it's just weak. Elasticity of demand measures the <em>degree</em> of responsiveness, not whether the law operates.
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card">
+      <div class="q-num">Q. 03</div>
+      <span class="diff hard">Hard</span>
+      <p>During a stock market boom, people demand more shares even as their prices rise. Is this an exception to the Law of Demand? Justify your answer with economic reasoning.</p>
+      <div class="hint">💡 Hint: Think about expectations and speculative demand.</div>
+      <button class="ans-toggle" onclick="toggleAns(this)">Show Answer</button>
+      <div class="answer">
+        Yes, this is an apparent exception to the Law of Demand, falling under the category of <strong>"expectation of future price rise."</strong> During a boom, investors expect share prices to rise even further. They are not buying shares for current utility but for future profit. This is speculative demand — the consumer is not responding to current price but to future expected price. The ceteris paribus condition is violated here because expectations (a determinant of demand) are changing — so technically the entire demand curve has shifted rightward, not a movement along it.
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card">
+      <div class="q-num">Q. 04</div>
+      <span class="diff hots">HOTS</span>
+      <p>Distinguish between 'Change in Demand' and 'Change in Quantity Demanded' using diagrams. Explain which one is caused by the Law of Demand.</p>
+      <div class="hint">💡 Hint: One causes a movement along the curve; the other causes a shift of the curve.</div>
+      <button class="ans-toggle" onclick="toggleAns(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Change in Quantity Demanded:</strong> Caused by a change in the <em>own price</em> of the good. Represented by a movement along the same demand curve — upward (contraction) when price rises, downward (expansion) when price falls. This is directly governed by the Law of Demand.<br><br>
+        <strong>Change in Demand:</strong> Caused by changes in other determinants — income, prices of related goods, tastes, expectations. Represented by a shift of the entire demand curve — rightward (increase in demand) or leftward (decrease in demand). The Law of Demand does not govern this; it relates to non-price factors.
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-card">
+      <div class="q-num">Q. 05</div>
+      <span class="diff hard">Hard</span>
+      <p>A consumer's income rises. Using the concept of normal and inferior goods, explain how this affects the position of the demand curve for each type of good. Does the Law of Demand still hold?</p>
+      <button class="ans-toggle" onclick="toggleAns(this)">Show Answer</button>
+      <div class="answer">
+        <strong>Normal Goods:</strong> When income rises, demand for normal goods increases — the demand curve shifts <em>rightward</em>. At every price level, the consumer now demands more. The Law of Demand still holds because the inverse price-demand relationship is preserved along the new curve.<br><br>
+        <strong>Inferior Goods:</strong> When income rises, demand falls (consumers switch to superior alternatives) — the demand curve shifts <em>leftward</em>. Again, the Law of Demand still holds because along the new (shifted) curve, the inverse price-demand relationship is preserved. The shift is due to income (non-price factor) — it does not violate the law, it is a change <em>in</em> demand, not a change <em>of</em> the law.
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="q-card">
+      <div class="q-num">Q. 06</div>
+      <span class="diff hots">HOTS</span>
+      <p>"The Law of Demand applies only under the condition of ceteris paribus, which is unrealistic." Do you agree? How do economists justify using this assumption?</p>
+      <button class="ans-toggle" onclick="toggleAns(this)">Show Answer</button>
+      <div class="answer">
+        Partially agree. The ceteris paribus assumption is indeed an abstraction — in real life, income, tastes, prices of substitutes, etc. constantly change. However, economists use this assumption as a <strong>scientific method</strong> to isolate and study the pure effect of one variable (price) on another (quantity demanded). It is similar to how physics experiments control all variables except one. Without this, it would be impossible to establish any reliable economic law. The assumption is not about describing reality perfectly — it's a <em>methodological tool</em> to analyze partial relationships. In practice, economists then relax the assumption to study fuller, real-world scenarios.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h3>📋 Quick Revision Summary</h3>
+    <ul>
+      <li>Law of Demand: Inverse relationship between price and quantity demanded (ceteris paribus)</li>
+      <li>Demand Schedule: Table showing Q demanded at various prices</li>
+      <li>Demand Curve: Downward sloping curve (left to right); Price on Y-axis, Qty on X-axis</li>
+      <li>Reasons: DMU, Income Effect, Substitution Effect, New buyers, Multiple uses</li>
+      <li>Movement Along Curve: Due to price change → Change in quantity demanded</li>
+      <li>Shift of Curve: Due to non-price factors → Change in demand</li>
+      <li>Exceptions: Giffen goods, Veblen goods, Future price expectations, Necessities, Ignorance effect</li>
+    </ul>
+  </div>
+
+</main>
+
+<script>
+  function toggleAns(btn) {
+    const ans = btn.nextElementSibling;
+    ans.classList.toggle('open');
+    btn.textContent = ans.classList.contains('open') ? 'Hide Answer' : 'Show Answer';
+  }
+
+  // Smooth scroll for nav
+  document.querySelectorAll('.nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('.nav a').forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
